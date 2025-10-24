@@ -1,0 +1,29 @@
+import plagas.*
+import elementos.*
+
+describe "name" {
+    const cucas1 = new Cucarachas(poblacion=15,pesoPromedioBicho=8)
+    const cucas2 = new Cucarachas(poblacion=25,pesoPromedioBicho=12)
+    const pulgas1 = new Pulgas(poblacion=8)
+    const pulgas2 = new Pulgas(poblacion=18)
+    const garra1 = new Garrapatas(poblacion=10)
+    const mosqui1 = new Mosquitos(poblacion=50)
+    const hogar1 = new Hogar(nivelDeMugre=10,confort=50)
+    const huerta1 = new Huerta(capacidadProduccion=300)
+    const firulais = new Mascota(salud=300)
+    const pichichu = new Mascota(salud=100)
+
+  test "cucas1 ataca a hogar1 entonces hogar queda con mugre 17,5 y queda con poblacion 16,5" {
+    cucas1.atacarA(hogar1)
+    assert.equals(17.5, hogar1.mugre())
+    assert.equals(18.5, cucas1.poblacion())
+  }
+
+  test "garra1 ataca a pichichus 2 veces, garra 1 queda con 14.4" {
+    garra1.atacarA(pichichu)
+    garra1.atacarA(pichichu)
+    assert.equals(56, pichichu.salud())
+    assert.equals(14.4,garra1.poblacion())
+  }
+}
+
